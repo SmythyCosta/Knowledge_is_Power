@@ -42,7 +42,7 @@ define('PORT_SMTP', 587);
 define('SECURE_SMTP', 'tls');
 define('PAUTH_SMTP', true);
 define('USERNAME_SMTP', 'smythy.costa@hotmail.com');
-define('PASSWORD_SMTP', '');
+define('PASSWORD_SMTP', 'vasco@123');
 define('SUBJECT_SMTP', 'Knowledge_is_Power');
 
 // ********************************* //

@@ -80,7 +80,7 @@ if (isset($_SESSION['user_id'])) {
 			<li><a href="renew.php">Renew</a></li>
 			<li><a href="change_password.php">Change Password</a></li>
 			<li><a href="favorites.php">Favorites</a></li>
-			<li><a href="recommendations.php">Recommendations</a></li>
+			<li><a href="#">Recommendations</a></li>
 		</ul>
 	</li>';
 
@@ -112,6 +112,15 @@ if (isset($_SESSION['user_id'])) {
 			<div class="col-3">
 				<h3 class="text-success">Content</h3>
 			<div class="list-group">
+                            
+<?php // Dynamically generate the content links:
+$q = 'SELECT * FROM categories ORDER BY category';
+$r = mysqli_query($dbc, $q);
+while (list($id, $category) = mysqli_fetch_array($r, MYSQLI_NUM)) {
+	echo '<a href="category.php?id=' . $id . '" class="list-group-item" title="' . $category . '">' . htmlspecialchars($category) . '
+	</a>';
+}
+?>
                             
 
 			  <a href="pdfs.php" class="list-group-item" title="PDFs">PDF Guides

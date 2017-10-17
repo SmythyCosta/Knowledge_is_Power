@@ -13,7 +13,6 @@
 	* - Sets how errors will be handled.
 	* - Defines a redirection function.
 	*
-	* This script is begun in Chapter 3.
 */
 
 // ********************************** //
@@ -33,8 +32,8 @@ DEFINE('CONTACT_EMAIL', 'you@example.com');
 
 // Determine location of files and the URL of the site:
 define ('BASE_URI', 'xampp/htdocs/Knowledge_is_Power/');
-define ('BASE_URL', 'localhost/Knowledge_is_Power/');
-define ('PDFS_DIR', BASE_URI . 'pdfs/'); // Added in Chapter 5.
+define ('BASE_URL', 'localhost/Knowledge_is_Power/Knowledge_is_Power/');
+define ('PDFS_DIR', BASE_URI . 'pdfs/'); 
 
 //****************  SMTP SERVER   ****************
 define('HOST_SMTP', 'smtp.live.com');

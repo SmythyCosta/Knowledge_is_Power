@@ -131,7 +131,7 @@ create_form_input('content', 'textarea', 'Content', $add_page_errors);
 
 </form> 
 
-<script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript" src="js/tinymce/js/tinymce/tinymce.min.js"></script>
 <script type="text/javascript">
 	tinyMCE.init({
 		// General options

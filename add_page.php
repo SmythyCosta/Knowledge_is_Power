@@ -82,11 +82,12 @@ require('includes/form_functions.inc.php');
 <form action="add_page.php" method="post" accept-charset="utf-8">
 
 	<fieldset><legend>Fill out the form to add a page of content:</legend>
-<div class="form-group">
-<label for="status" class="control-label">Status</label>
-<select name="status" class="form-control"><option value="draft">Draft</option>
-<option value="live">Live</option>
-</select></div>
+	<div class="form-group">
+		<label for="status" class="control-label">Status</label>
+		<select name="status" class="form-control"><option value="draft">Draft</option>
+		<option value="live">Live</option>
+		</select>
+	</div>
 
 <?php
 create_form_input('title', 'text', 'Title', $add_page_errors); 
@@ -101,8 +102,6 @@ echo '"><label for="category" class="control-label">Category</label>
 <option>Select One</option>';
 */
 
-// Bonus material!
-// Added in Chapter 12.
 // Allow for multiple categories:
 echo '"><label for="category" class="control-label">Category</label>
 <select name="category[]" class="form-control" multiple size="5">';

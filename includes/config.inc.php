@@ -31,9 +31,8 @@ DEFINE('CONTACT_EMAIL', 'you@example.com');
 // ************ CONSTANTS *********** //
 
 // Determine location of files and the URL of the site:
-define ('BASE_URI', 'xampp/htdocs/Knowledge_is_Power/');
 define ('BASE_URL', 'localhost/Knowledge_is_Power/Knowledge_is_Power/');
-define ('PDFS_DIR', BASE_URI . 'pdfs/'); 
+define ('PDFS_DIR', './pdfs/'); 
 
 //****************  SMTP SERVER   ****************
 define('HOST_SMTP', 'smtp.live.com');
@@ -41,7 +40,7 @@ define('PORT_SMTP', 587);
 define('SECURE_SMTP', 'tls');
 define('PAUTH_SMTP', true);
 define('USERNAME_SMTP', 'smythy.costa@hotmail.com');
-define('PASSWORD_SMTP', 'vasco@123');
+define('PASSWORD_SMTP', '');
 define('SUBJECT_SMTP', 'Knowledge_is_Power');
 
 // ********************************* //

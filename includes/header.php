@@ -91,7 +91,7 @@ if (isset($_SESSION['user_id'])) {
 			<ul class="dropdown-menu">
 				<li><a href="add_page.php">Add Page</a></li>
 				<li><a href="add_pdf.php">Add PDF</a></li>
-				<li><a href="#">Something else here</a></li>
+				<li><a href="logout.php">Logout</a></li>
 			</ul>
 		</li>';		
 	}

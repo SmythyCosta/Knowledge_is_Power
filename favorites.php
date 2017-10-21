@@ -2,6 +2,9 @@
 
 // Require the configuration before any PHP code as the configuration controls error reporting:
 require('./includes/config.inc.php');
+
+// Require the database connection:
+require('./includes/mysql.inc.php');
 // The config file also starts the session.
 
 // If the user isn't logged in, redirect them:
@@ -13,8 +16,6 @@ include('./includes/header.php');
 
 echo '<h3>Your Favorite Pages</h3>';
 
-// Require the database connection:
-require('./includes/mysql.inc.php');
 
 // Get the page info:
 // Query to select all pages and indicate favorites, for future reference:

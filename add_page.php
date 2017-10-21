@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	} else {
 		$add_page_errors['title'] = 'Please enter the title!';
 	}
-	
+        
 	// Check for a category:
 	if (filter_var($_POST['category'], FILTER_VALIDATE_INT, array('min_range' => 1))) {
 		$cat = $_POST['category'];
@@ -96,15 +96,18 @@ create_form_input('title', 'text', 'Title', $add_page_errors);
 echo '<div class="form-group';
 if (array_key_exists('category', $add_page_errors)) echo ' has-error'; 
 
-/*
+
 echo '"><label for="category" class="control-label">Category</label>
 <select name="category" class="form-control">
 <option>Select One</option>';
-*/
 
+
+/***
 // Allow for multiple categories:
 echo '"><label for="category" class="control-label">Category</label>
 <select name="category[]" class="form-control" multiple size="5">';
+ ***/
+
 
 // Retrieve all the categories and add to the pull-down menu:
 $q = "SELECT id, category FROM categories ORDER BY category ASC";

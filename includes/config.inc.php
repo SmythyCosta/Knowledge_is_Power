@@ -114,7 +114,13 @@ function redirect_invalid_user($check = 'user_id', $destination = 'index.php', $
 	
 } // End of redirect_invalid_user() function.
 
-// ************ REDIRECT FUNCTION ************ //
+
+
+// ************    TEST UNITARY ************ //
 // ******************************************* //
+function testDebug($var){
+        echo 'DEBUG TEST => '.$var;
+        exit(); 
+}
 
 // Omit the closing PHP tag to avoid 'headers already sent' errors!

@@ -3,15 +3,8 @@
 // This file is the home page. 
 require('./includes/config.inc.php');
 
-// To test the sidebars:
 // check session
 require('./includes/check_session.inc.php');
-
-////$_SESSION['user_id'] = 1;
-////$_SESSION['user_admin'] = true;
-////$_SESSION['user_not_expired'] = true;
-
-//$_SESSION=array();
 
 // Require the database connection:
 require('./includes/mysql.inc.php');

@@ -15,7 +15,7 @@ require('./includes/form_functions.inc.php');
 		}
 		create_form_input('email', 'email', '', $login_errors, array('placeholder'=>'Email address')); 
 		create_form_input('pass', 'password', '', $login_errors, array('placeholder'=>'Password')); 
-		echo '<span class="help-block"><a href="forgot_password.php">Forgot?</a></span>';
+		echo '<span class="help-block"><a href="forgot_password.php">Esqueci a senha</a></span>';
 		?>
 	<button type="submit" class="btn btn-default">Login &rarr;</button>
 	</fieldset>

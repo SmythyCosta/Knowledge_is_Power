@@ -6,13 +6,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><?php // Use a default page title if one wasn't provided...
-	if (isset($page_title)) { 
-			echo $page_title; 
-	} else { 
-			echo APP_NAME; 
-	} 
-	?></title>
+    <title>
+	    <?php 
+	    	// Use a default page title if one wasn't provided...
+			if (isset($page_title)) { 
+					echo $page_title; 
+			} else { 
+					echo APP_NAME; 
+			} 
+		?>
+	</title>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
@@ -40,63 +43,65 @@
           <a class="navbar-brand" href="index.php" style="color: #468847;"> <?PHP echo APP_NAME;?> </a>
           <div class="nav-collapse collapse">
             <ul class="nav navbar-nav">
-<?php // Dynamically create header menus...
 
-// Array of labels and pages (without extensions):
-$pages = array (
-	'Home' => 'index.php',
-	'About' => '#',
-	'Contact' => '#',
-	'Register' => 'register.php'
-);
+<?php 
+	// Dynamically create header menus...
 
-// The page being viewed:
-$this_page = basename($_SERVER['PHP_SELF']);
+	// Array of labels and pages (without extensions):
+	$pages = array (
+		'Home' => 'index.php',
+		//'About' => '#',
+		//'Contact' => '#',
+		'Cadastra-se' => 'register.php'
+	);
 
-// Create each menu item:
-foreach ($pages as $k => $v) {
+	// The page being viewed:
+	$this_page = basename($_SERVER['PHP_SELF']);
 
-	// Start the item:
-	echo '<li';
+	// Create each menu item:
+	foreach ($pages as $k => $v) {
 
-	// Add the class if it's the current page:
-	if ($this_page == $v) echo ' class="active"';
+		// Start the item:
+		echo '<li';
 
-	// Complete the item:
-	echo '><a href="' . $v . '">' . $k . '</a></li>
-	';
+		// Add the class if it's the current page:
+		if ($this_page == $v) echo ' class="active"';
 
-} // End of FOREACH loop.
+		// Complete the item:
+		echo '><a href="' . $v . '">' . $k . '</a></li>
+		';
 
-// Show the user options:
-if (isset($_SESSION['user_id'])) {
+	} // End of FOREACH loop.
 
-	// Show basic user options:
-	// Includes references to some bonus material discussed in Part Four!
-	echo '<li class="dropdown">
-	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
-		<ul class="dropdown-menu">
-			<li><a href="logout.php">Logout</a></li>
-			<li><a href="renew.php">Renew</a></li>
-			<li><a href="change_password.php">Change Password</a></li>
-			<li><a href="favorites.php">Favorites</a></li>
-			<li><a href="#">Recommendations</a></li>
-		</ul>
-	</li>';
+	// Show the user options:
+	if (isset($_SESSION['user_id'])) {
 
-	// Show admin options, if appropriate:
-	if (isset($_SESSION['user_admin'])) {
+		// Show basic user options:
+		// Includes references to some bonus material discussed in Part Four!
 		echo '<li class="dropdown">
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
 			<ul class="dropdown-menu">
-				<li><a href="add_page.php">Add Page</a></li>
-				<li><a href="add_pdf.php">Add PDF</a></li>
 				<li><a href="logout.php">Logout</a></li>
+				<li><a href="renew.php">Renew</a></li>
+				<li><a href="change_password.php">Change Password</a></li>
+				<li><a href="favorites.php">Favorites</a></li>
+				<li><a href="#">Recommendations</a></li>
 			</ul>
-		</li>';		
-	}
-	
-} // user_id not set.
+		</li>';
+
+		// Show admin options, if appropriate:
+		if (isset($_SESSION['user_admin'])) {
+			echo '<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="add_page.php">Add Page</a></li>
+					<li><a href="add_pdf.php">Add PDF</a></li>
+					<li><a href="logout.php">Logout</a></li>
+				</ul>
+			</li>';		
+		}
+		
+	} // user_id not set.
 
 ?>
             </ul>
@@ -113,13 +118,14 @@ if (isset($_SESSION['user_id'])) {
 				<h3 class="text-success">Conteúdo</h3>
 			<div class="list-group">
                             
-<?php // Dynamically generate the content links:
-$q = 'SELECT * FROM categories ORDER BY category';
-$r = mysqli_query($dbc, $q);
-while (list($id, $category) = mysqli_fetch_array($r, MYSQLI_NUM)) {
-	echo '<a href="category.php?id=' . $id . '" class="list-group-item" title="' . $category . '">' . htmlspecialchars($category) . '
-	</a>';
-}
+<?php 
+	// Dynamically generate the content links:
+	$q = 'SELECT * FROM categories ORDER BY category';
+	$r = mysqli_query($dbc, $q);
+	while (list($id, $category) = mysqli_fetch_array($r, MYSQLI_NUM)) {
+		echo '<a href="category.php?id=' . $id . '" class="list-group-item" title="' . $category . '">' . htmlspecialchars($category) . '
+		</a>';
+	}
 ?>
                             
 
@@ -127,10 +133,11 @@ while (list($id, $category) = mysqli_fetch_array($r, MYSQLI_NUM)) {
 			  </a>
 			</div><!--/list-group-->
 
-<?php // Should we show the login form?
-if (!isset($_SESSION['user_id'])) {
-	require('includes/login_form.inc.php');
-}
+<?php 
+	// Should we show the login form?
+	if (!isset($_SESSION['user_id'])) {
+		require('includes/login_form.inc.php');
+	}
 ?>
 			</div><!--/col-3-->
 		  

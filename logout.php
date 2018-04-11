@@ -22,7 +22,7 @@ $page_title = 'Logout';
 include('./includes/header.php');
 
 // Print a customized message:
-echo '<h1>Logged Out</h1><p>Thank you for visiting. You are now logged out. Please come back soon!</p>';
+echo '<h1>Logged Out</h1><p>Obrigado pela visita. Você está desconectado agora!</p>';
 
 // Include the HTML footer:
 include('./includes/footer.php');

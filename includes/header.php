@@ -10,7 +10,7 @@
 	if (isset($page_title)) { 
 			echo $page_title; 
 	} else { 
-			echo 'Knowledge is Power: And It Pays to Know'; 
+			echo APP_NAME; 
 	} 
 	?></title>
 
@@ -37,7 +37,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">Knowledge is Power</a>
+          <a class="navbar-brand" href="index.php" style="color: #468847;"> <?PHP echo APP_NAME;?> </a>
           <div class="nav-collapse collapse">
             <ul class="nav navbar-nav">
 <?php // Dynamically create header menus...
@@ -110,7 +110,7 @@ if (isset($_SESSION['user_id'])) {
 		<div class="row">
 			
 			<div class="col-3">
-				<h3 class="text-success">Content</h3>
+				<h3 class="text-success">Conteúdo</h3>
 			<div class="list-group">
                             
 <?php // Dynamically generate the content links:

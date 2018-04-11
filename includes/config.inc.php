@@ -31,8 +31,9 @@ DEFINE('CONTACT_EMAIL', 'you@example.com');
 // ************ CONSTANTS *********** //
 
 // Determine location of files and the URL of the site:
-define ('BASE_URL', 'localhost/Knowledge_is_Power/Knowledge_is_Power/');
+define ('BASE_URL', 'http://localhost/knowledge_is_power/');
 define ('PDFS_DIR', './pdfs/'); 
+
 
 //****************  SMTP SERVER   ****************
 define('HOST_SMTP', 'smtp.live.com');
@@ -124,3 +125,7 @@ function testDebug($var){
 }
 
 // Omit the closing PHP tag to avoid 'headers already sent' errors!
+
+
+// APP:
+define ('APP_NAME', 'TI stack');

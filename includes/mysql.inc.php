@@ -15,7 +15,7 @@
 DEFINE ('DB_HOST', 'localhost');
 DEFINE ('DB_USER', 'root');
 DEFINE ('DB_PASSWORD', 'root');
-DEFINE ('DB_NAME', 'knowledge_is_power_tk_aa2552a5252b');
+DEFINE ('DB_NAME', 'knowledge_is_power');
 
 // Make the connection:
 $dbc = mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);

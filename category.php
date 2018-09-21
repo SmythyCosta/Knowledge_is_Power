@@ -52,7 +52,7 @@ if (filter_var($_GET['id'], FILTER_VALIDATE_INT, array('min_range' => 1))) {
 		} // End of WHILE loop.
 		
 	} else { // No pages available.
-		echo '<p>There are currently no pages of content associated with this category. Please check back again!</p>';
+		echo '<p>Atualmente não há páginas de conteúdo associados a esta categoria. Por favor, volte novamente!</p>';
 	}
 
 } else { // No valid ID.

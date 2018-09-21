@@ -31,7 +31,7 @@ DEFINE('CONTACT_EMAIL', 'you@example.com');
 // ************ CONSTANTS *********** //
 
 // Determine location of files and the URL of the site:
-define ('BASE_URL', 'http://localhost/knowledge_is_power/');
+define ('BASE_URL', 'http://localhost/Knowledge_is_Power/public_html/');
 define ('PDFS_DIR', './pdfs/'); 
 
 

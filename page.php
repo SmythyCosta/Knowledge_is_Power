@@ -7,7 +7,7 @@ require('./includes/config.inc.php');
 // Require the database connection:
 require('./includes/mysql.inc.php');
 
-$_SESSION['user_id'] =7;
+$_SESSION['user_id'] =1;
 $_SESSION['user_not_expired'] = true;
 
 // Validate the category ID:

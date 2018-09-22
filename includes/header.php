@@ -88,7 +88,7 @@
 				<li><a href="#">Recommendations</a></li>
 			</ul>
 		</li>';
-
+		
 		// Show admin options, if appropriate:
 		if (isset($_SESSION['user_admin'])) {
 			echo '<li class="dropdown">

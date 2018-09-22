@@ -17,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // Include the header file:
 include('./includes/header.php');
 
-/* PAGE CONTENT STARTS HERE! */
 ?>
+
 <h1>Welcome</h1>
 
 <p class="lead">Integre-se, faça amizades, siga pessoas, troque mensagens.</p>
@@ -28,17 +28,16 @@ include('./includes/header.php');
 <h1>Nossos conteudos:</h1>
 
 <ul>
-  <li>Disciplinas</li>
-  <li>Artigos</li>
-  <li>Desafios</li>
-  <li>Discursão sobre provas</li>
+	<li>Disciplinas</li>
+	<li>Artigos</li>
+	<li>Desafios</li>
+	<li>Discursão sobre provas</li>
 </ul>
 
 <p>“É praticando que você aprende!”.</p>
 
 
-<?php /* PAGE CONTENT ENDS HERE! */
-
+<?php
 // Include the footer file to complete the template:
 include('./includes/footer.php');
 ?>

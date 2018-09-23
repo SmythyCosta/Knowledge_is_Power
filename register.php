@@ -169,7 +169,7 @@ require_once('./includes/form_functions.inc.php');
 	echo '<span class="help-block">Apenas letras e números são permitidos.</span>';
 	create_form_input('email', 'email', 'Email', $reg_errors); 
 	create_form_input('pass1', 'password', 'Senha', $reg_errors);
-	echo '<span class="help-block">Must be at least 6 characters long, with at least one lowercase letter, one uppercase letter, and one number.</span>';
+	echo '<span class="help-block">Deve ter pelo menos 6 caracteres, com pelo menos uma letra minúscula, uma letra maiúscula e um número.</span>';
 	create_form_input('pass2', 'password', 'Confirme a Senha', $reg_errors); 
 	?>
 	<input type="submit" name="submit_button" value="Avançar &rarr;" id="submit_button" class="btn btn-default" />

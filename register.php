@@ -18,31 +18,41 @@ $reg_errors = array();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	// Check for a first name:
-	if (preg_match('/^[A-Z \'.-]{2,45}$/i', $_POST['first_name'])) {
+	// original version preg_match
+	//if (preg_match('/^[A-Z \'.-]{2,45}$/i', $_POST['first_name']))
+	// -----------
+	// References:
+	// https://makandracards.com/zeroglosa/8601-acentos-em-expressao-regular
+	if (preg_match('/^[A-ZÀ-Ú \'.-]{2,45}$/i', $_POST['first_name'])) {
 		$fn = escape_data($_POST['first_name'], $dbc);
 	} else {
-		$reg_errors['first_name'] = 'Please enter your first name!';
+		$reg_errors['first_name'] = 'Por favor entre com seu primeiro nome!';
 	}
 	
 	// Check for a last name:
-	if (preg_match('/^[A-Z \'.-]{2,45}$/i', $_POST['last_name'])) {
+	// original version preg_match
+	//if (preg_match('/^[A-Z \'.-]{2,45}$/i', $_POST['last_name'])) {
+	// -----------
+	// References:
+	// https://makandracards.com/zeroglosa/8601-acentos-em-expressao-regular
+	if (preg_match('/^[A-ZÀ-Ú \'.-]{2,45}$/i', $_POST['last_name'])) {
 		$ln = escape_data($_POST['last_name'], $dbc);
 	} else {
-		$reg_errors['last_name'] = 'Please enter your last name!';
+		$reg_errors['last_name'] = 'Por favor insira seu sobrenome!';
 	}
 	
 	// Check for a username:
 	if (preg_match('/^[A-Z0-9]{2,45}$/i', $_POST['username'])) {
 		$u = escape_data($_POST['username'], $dbc);
 	} else {
-		$reg_errors['username'] = 'Please enter a desired name using only letters and numbers!';
+		$reg_errors['username'] = 'Por favor, digite um nome desejado usando apenas letras e números!';
 	}
 	
 	// Check for an email address:
 	if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === $_POST['email']) {
 		$e = escape_data($_POST['email'], $dbc);
 	} else {
-		$reg_errors['email'] = 'Please enter a valid email address!';
+		$reg_errors['email'] = 'Por favor insira um endereço de e-mail válido!';
 	}
 
 	// Check for a password and match against the confirmed password:
@@ -50,10 +60,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		if ($_POST['pass1'] === $_POST['pass2']) {
 			$p = $_POST['pass1'];
 		} else {
-			$reg_errors['pass2'] = 'Your password did not match the confirmed password!';
+			$reg_errors['pass2'] = 'Sua senha não corresponde à senha confirmada!';
 		}
 	} else {
-		$reg_errors['pass1'] = 'Please enter a valid password!';
+		$reg_errors['pass1'] = 'Por favor coloque uma senha válida!';
 	}
 	
 	if (empty($reg_errors)) { // If everything's OK...
@@ -88,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				// Store the new user ID in the session:
 				// Added in Chapter 6:
 				$uid = mysqli_insert_id($dbc);
-//				$_SESSION['reg_user_id']  = $uid;		
+				//$_SESSION['reg_user_id']  = $uid;		
 
 				// Display a thanks message...
 
@@ -109,12 +119,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				';
 
 				// Send email
-                                include"./libs/PHPMailer/PHPMailerAutoload.php";
+                include"./libs/PHPMailer/PHPMailerAutoload.php";
 				$body = "Thank you for registering at <whatever site>. Blah. Blah. Blah.\n\n";
-                                $Subject = 'Registration Confirmation';
-                                $Address = $_POST['email'];
+                $Subject = 'Registration Confirmation';
+                $Address = $_POST['email'];
                                 
-                                include ('./includes/send_email.inc.php');
+                include ('./includes/send_email.inc.php');
 	
 				// Finish the page:
 				include('./includes/footer.php'); // Include the HTML footer.
@@ -159,12 +169,12 @@ require_once('./includes/form_functions.inc.php');
 ?>
 
 <h1>Register</h1>
-<p>O acesso ao conteúdo do site está disponível para usuários registrados a um custo de R$ 5,00 (REAIS) por ano. Utilize o formulário abaixo para iniciar o processo de registro. <strong> Todos os campos são obrigatórios</strong>. Depois de preencher este formulário, você terá a oportunidade de pagar sua assinatura anual via <a href="http://www.paypal.com">PayPal</a> com segurança.</p>
+<p>O acesso ao conteúdo do site está disponível para usuários registrados a um custo de R$ 10,00 (REAIS) por ano. Utilize o formulário abaixo para iniciar o processo de registro. <strong> Todos os campos são obrigatórios</strong>. Depois de preencher este formulário, você terá a oportunidade de pagar sua assinatura anual via <a href="http://www.paypal.com">PayPal</a> com segurança.</p>
 
 <form action="register.php" method="post" accept-charset="utf-8">
 	<?php 
 	create_form_input('first_name', 'text', 'Primeiro nome', $reg_errors); 
-	create_form_input('last_name', 'text', 'Último nome', $reg_errors); 
+	create_form_input('last_name', 'text', 'Sobrenome', $reg_errors); 
 	create_form_input('username', 'text', 'Nome de usuário', $reg_errors); 
 	echo '<span class="help-block">Apenas letras e números são permitidos.</span>';
 	create_form_input('email', 'email', 'Email', $reg_errors); 

@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				// echo '<div class="alert alert-success"><h3>Thanks!</h3><p>Thank you for registering! You may now log in and access the site\'s content.</p></div>';
 
 				// Updated message in Chapter 6:
-				echo '<div class="alert alert-success"><h3>Thanks!</h3><p>Thank you for registering! To complete the process, please now click the button below so that you may pay for your site access via PayPal. The cost is $10 (US) per year. <strong>Note: When you complete your payment at PayPal, please click the button to return to this site.</strong></p></div>';
+				echo '<div class="alert alert-success"><h3>Obrigado!</h3><p>Obrigado por se registrar! Para concluir o processo, clique no botão abaixo para pagar pelo acesso ao seu site via PayPal. O custo é de 10 R$ por ano. <strong>Observação: quando você concluir seu pagamento no PayPal, clique no botão para retornar a este site.</strong></p></div>';
 
 				// PayPal link added in Chapter 6:
 				echo '<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
@@ -138,8 +138,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			
 			if ($rows === 2) { // Both are taken.
 	
-				$reg_errors['email'] = 'This email address has already been registered. If you have forgotten your password, use the link at left to have your password sent to you.';			
-				$reg_errors['username'] = 'This username has already been registered. Please try another.';			
+				$reg_errors['email'] = 'Este endereço de e-mail já foi registrado. Se você esqueceu sua senha, use o link à esquerda para mandar sua senha para você.';			
+				$reg_errors['username'] = 'Este nome de usuário já foi registrado. Por favor tente outro.';			
 
 			} else { // One or both may be taken.
 
@@ -147,12 +147,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$row = mysqli_fetch_array($r, MYSQLI_NUM);
 						
 				if( ($row[0] === $_POST['email']) && ($row[1] === $_POST['username'])) { // Both match.
-					$reg_errors['email'] = 'This email address has already been registered. If you have forgotten your password, use the link at left to have your password sent to you.';	
-					$reg_errors['username'] = 'This username has already been registered with this email address. If you have forgotten your password, use the link at left to have your password sent to you.';
+					$reg_errors['email'] = 'Este endereço de e-mail já foi registrado. Se você esqueceu sua senha, use o link à esquerda para mandar sua senha para você.';	
+					$reg_errors['username'] = 'Este nome de usuário já foi registrado com este endereço de e-mail. Se você esqueceu sua senha, use o link à esquerda para mandar sua senha para você.';
 				} elseif ($row[0] === $_POST['email']) { // Email match.
-					$reg_errors['email'] = 'This email address has already been registered. If you have forgotten your password, use the link at left to have your password sent to you.';						
+					$reg_errors['email'] = 'Este endereço de e-mail já foi registrado. Se você esqueceu sua senha, use o link à esquerda para mandar sua senha para você.';						
 				} elseif ($row[1] === $_POST['username']) { // Username match.
-					$reg_errors['username'] = 'This username has already been registered. Please try another.';			
+					$reg_errors['username'] = 'Este nome de usuário já foi registrado. Por favor tente outro.';			
 				}
 		
 			} // End of $rows === 2 ELSE.

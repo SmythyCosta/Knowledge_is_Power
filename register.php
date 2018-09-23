@@ -1,8 +1,6 @@
 <?php
-
 // Require the configuration before any PHP code as the configuration controls error reporting:
 require('./includes/config.inc.php');
-// The config file also starts the session.
 
 // Require the database connection:
 require('./includes/mysql.inc.php');
@@ -18,8 +16,6 @@ $reg_errors = array();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	// Check for a first name:
-	// original version preg_match
-	//if (preg_match('/^[A-Z \'.-]{2,45}$/i', $_POST['first_name']))
 	// -----------
 	// References:
 	// https://makandracards.com/zeroglosa/8601-acentos-em-expressao-regular
@@ -30,8 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	}
 	
 	// Check for a last name:
-	// original version preg_match
-	//if (preg_match('/^[A-Z \'.-]{2,45}$/i', $_POST['last_name'])) {
 	// -----------
 	// References:
 	// https://makandracards.com/zeroglosa/8601-acentos-em-expressao-regular
@@ -84,7 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			
 			// Temporary: set expiration to a month!
 			// Change after adding PayPal!
-			// $q = "INSERT INTO users (username, email, pass, first_name, last_name, date_expires) VALUES ('$u', '$e', '"  .  password_hash($p, PASSWORD_BCRYPT) .  "', '$fn', '$ln', ADDDATE(NOW(), INTERVAL 1 MONTH) )";
+			// ---------------------------
+			//$q = "INSERT INTO users (username, email, pass, first_name, last_name, date_expires) VALUES ('$u', '$e', '"  .  password_hash($p, PASSWORD_BCRYPT) .  "', '$fn', '$ln', ADDDATE(NOW(), INTERVAL 1 MONTH) )";
 			
 			// New query, updated in Chapter 6 for PayPal integration:
 			// Sets expiration to yesterday:
@@ -106,22 +101,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				// echo '<div class="alert alert-success"><h3>Thanks!</h3><p>Thank you for registering! You may now log in and access the site\'s content.</p></div>';
 
 				// Updated message in Chapter 6:
-				echo '<div class="alert alert-success"><h3>Obrigado!</h3><p>Obrigado por se registrar! Para concluir o processo, clique no botão abaixo para pagar pelo acesso ao seu site via PayPal. O custo é de 10 R$ por ano. <strong>Observação: quando você concluir seu pagamento no PayPal, clique no botão para retornar a este site.</strong></p></div>';
+				echo '<div class="alert alert-success">
+						<h3>Obrigado!</h3>
+						<p>Obrigado por se registrar! Para concluir o processo, clique no botão abaixo para pagar pelo acesso ao seu site via PayPal. O custo é de 10 R$ por ano. <strong>Observação: quando você concluir seu pagamento no PayPal, clique no botão para retornar a este site.</strong>
+						</p>
+					</div>';
 
 				// PayPal link added in Chapter 6:
 				echo '<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-				<input type="hidden" name="cmd" value="_s-xclick">
-					<input type="hidden" name="email" value="' . $e . '">
-				<input type="hidden" name="hosted_button_id" value="8YW8FZDELF296">
-				<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-				<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-				</form>
-				';
+						<input type="hidden" name="cmd" value="_s-xclick">
+						<input type="hidden" name="email" value="' . $e . '">
+						<input type="hidden" name="hosted_button_id" value="8YW8FZDELF296">
+						<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - A maneira mais segura e fácil de pagar online!">
+						<img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+					</form>';
 
 				// Send email
                 include"./libs/PHPMailer/PHPMailerAutoload.php";
-				$body = "Thank you for registering at <whatever site>. Blah. Blah. Blah.\n\n";
-                $Subject = 'Registration Confirmation';
+				$body = "Obrigado por se registrar. ".APP_NAME.".\n\n";
+                $Subject = "Confirmação de registro ".APP_NAME."";
                 $Address = $_POST['email'];
                                 
                 include ('./includes/send_email.inc.php');
@@ -131,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				exit(); // Stop the page.
 				
 			} else { // If it did not run OK.
-				trigger_error('You could not be registered due to a system error. We apologize for any inconvenience. We will correct the error ASAP.');
+				trigger_error('Você não pôde ser registrado devido a um erro do sistema. Pedimos desculpas por qualquer inconveniente. Vamos corrigir o erro o mais rápido possível.');
 			}
 			
 		} else { // The email address or username is not available.

@@ -11,6 +11,18 @@ require('./includes/config.inc.php');
 // Check for a POST request, with a provided transaction ID:
 if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['txn_id']) && ($_POST['txn_type'] === 'web_accept') ) {
 
-} else { // This page was not requested via POST, no reason to do anything!
+	// Create the cURL handler:
+	$ch = curl_init();
+
+	// Configure the request:
+	curl_setopt_array($ch, array (
+	    CURLOPT_URL => 'https://www.sandbox.paypal.com/cgi-bin/webscr',
+	    CURLOPT_POST => true,
+	    CURLOPT_POSTFIELDS => http_build_query(array('cmd' => '_notify-validate') + $_POST),
+	    CURLOPT_RETURNTRANSFER => true,
+	    CURLOPT_HEADER => false
+	));
+
+} else { // This page was not requested via POST, no reason to do anything!	
 	echo 'Nothing to do.';
 }

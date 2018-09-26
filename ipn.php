@@ -23,6 +23,15 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['txn_id']) && ($_POS
 	    CURLOPT_HEADER => false
 	));
 
+	// Execute the request:
+	$response = curl_exec($ch);
+
+	// Get the status code:
+	$status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+	// Close the connection:
+	curl_close($ch);
+
 } else { // This page was not requested via POST, no reason to do anything!	
 	echo 'Nothing to do.';
 }

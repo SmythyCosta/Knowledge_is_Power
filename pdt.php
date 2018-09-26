@@ -32,9 +32,10 @@ if (isset($_GET['tx'])) {
 	
 	// Close the connection:
 	curl_close($ch);
-		echo '<pre>' . print_r($response, 1) . '</pre>';
-		echo '<pre>' . print_r($status, 1) . '</pre>';
-exit;
+	echo '<pre>' . print_r($response, 1) . '</pre>';
+	echo '<pre>' . print_r($status, 1) . '</pre>';
+	exit;
+	
 	// Check the status code:
 	if ($status === 200) {
 
@@ -57,11 +58,11 @@ exit;
 
 		// Check the results:
 		if ( ($data['result'] === 'SUCCESS')
-		&& isset($data['payment_status'])
-		&& ($data['payment_status'] === 'Completed')
-		&& ($data['receiver_email'] === 'seller_1281297018_biz@mac.com')
-		&& ($data['mc_gross'] === 10.00)
-		&& ($data['mc_currency'] === 'USD') 
+			&& isset($data['payment_status'])
+			&& ($data['payment_status'] === 'Completed')
+			&& ($data['receiver_email'] === 'seller_1281297018_biz@mac.com')
+			&& ($data['mc_gross'] === 10.00)
+			&& ($data['mc_currency'] === 'USD') 
 		) { // Hooray!
 
 			// Check for this transaction in the database:

@@ -28,6 +28,7 @@ if (isset($_GET['page_id'], $_GET['action'], $_SESSION['user_id'])
 
 		// Require the database connection:
 		require('../includes/mysql.inc.php');
+		
 		$stmt = mysqli_prepare($dbc, $q);
 		mysqli_stmt_bind_param($stmt, 'ii', $_SESSION['user_id'], $_GET['page_id']);
 		mysqli_stmt_execute($stmt);

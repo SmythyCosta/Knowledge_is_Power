@@ -11,7 +11,7 @@ require('./includes/config.inc.php');
 // If the user hasn't just registered, redirect them:
 // ---------------------------------------------------
 //
-//redirect_invalid_user('reg_user_id');
+redirect_invalid_user('reg_user_id');
 //
 // Above line commented out in later version of this script.
 
@@ -26,17 +26,17 @@ include('./includes/header.php');
 // Update the users table:
 // -----------------------
 //
-//if (isset($_SESSION['reg_user_id']) && filter_var($_SESSION['reg_user_id'], FILTER_VALIDATE_INT, array('min_range' => 1))) {
-//    $q = "UPDATE users SET date_expires = ADDDATE(date_expires, INTERVAL 1 YEAR) WHERE id={$_SESSION['reg_user_id']}";
-//    $r = mysqli_query($dbc, $q);
-//}
+if (isset($_SESSION['reg_user_id']) && filter_var($_SESSION['reg_user_id'], FILTER_VALIDATE_INT, array('min_range' => 1))) {
+    $q = "UPDATE users SET date_expires = ADDDATE(date_expires, INTERVAL 1 YEAR) WHERE id={$_SESSION['reg_user_id']}";
+    $r = mysqli_query($dbc, $q);
+}
 //
 // Above lines commented out in later version of this script.
 
 // Unset the session var:
 // ----------------------
 //
-//unset($_SESSION['reg_user_id']);
+unset($_SESSION['reg_user_id']);
 //
 // Above line commented out in later version of this script.
 

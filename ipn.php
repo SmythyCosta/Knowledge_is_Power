@@ -32,6 +32,13 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['txn_id']) && ($_POS
 	// Close the connection:
 	curl_close($ch);
 
+	// Check that it worked:
+	if ($status === 200 && $response === 'VERIFIED') {
+
+	} else { // Bad response!
+		// Log for further investigation.		
+	}
+
 } else { // This page was not requested via POST, no reason to do anything!	
 	echo 'Nothing to do.';
 }

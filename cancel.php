@@ -12,4 +12,4 @@ require('./includes/mysql.inc.php');
 
 // Include the header file:
 $page_title = 'Oops!';
-include('./includes/header.html');
+include('./includes/header.php');

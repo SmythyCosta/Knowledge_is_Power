@@ -39,6 +39,21 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['txn_id']) && ($_POS
 		// Log for further investigation.		
 	}
 
+	// Open the text file:
+	// Change this path to make it accurate.
+	// The text file must be writable by PHP!
+	$file = fopen('pp_log.txt', 'a');
+
+	// Write the POST data to the file:
+	fwrite($file, "Received:\n");
+	ksort($_POST); // Better to be in alpha order
+	fwrite($file, print_r($_POST, true));
+	fwrite($file, "\n");
+	fwrite($file, "Status: $status\nResponse: $response\n");
+	// Indicate the end of this transaction in the text file:
+	fwrite($file, "--------------\n");
+	fclose($file);
+
 } else { // This page was not requested via POST, no reason to do anything!	
 	echo 'Nothing to do.';
 }

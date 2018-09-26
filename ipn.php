@@ -35,6 +35,26 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['txn_id']) && ($_POS
 	// Check that it worked:
 	if ($status === 200 && $response === 'VERIFIED') {
 
+		// Check for the right values:
+		if ( isset($_POST['payment_status']) 
+		  	&& ($_POST['payment_status'] === 'Completed')
+		  	&& ($_POST['receiver_email'] === 'seller_1281297018_biz@mac.com')
+		  	&& ($_POST['mc_gross'] === 10.00)
+		  	&& ($_POST['mc_currency']  === 'USD') 
+		  	&& (!empty($_POST['txn_id']))
+		) {
+
+			// Need the database connection now:
+			require('./includes/mysql.inc.php');
+
+			// Check for this transaction in the database:
+			$txn_id = escape_data($_POST['txn_id'], $dbc);			
+			$q = "SELECT id FROM orders WHERE transaction_id='$txn_id'";
+			$r = mysqli_query($dbc, $q);
+
+
+		} // The right values don't exist in $_POST!
+
 	} else { // Bad response!
 		// Log for further investigation.		
 	}

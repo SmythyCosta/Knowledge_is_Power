@@ -110,6 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				// PayPal link added in Chapter 6:
 				echo '<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 						<input type="hidden" name="cmd" value="_s-xclick">
+						<input type="hidden" name="custom" value="' . $uid . '">
 						<input type="hidden" name="email" value="' . $e . '">
 						<input type="hidden" name="hosted_button_id" value="8YW8FZDELF296">
 						<input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - A maneira mais segura e fácil de pagar online!">

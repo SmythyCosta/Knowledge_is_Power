@@ -51,7 +51,15 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['txn_id']) && ($_POS
 			$txn_id = escape_data($_POST['txn_id'], $dbc);			
 			$q = "SELECT id FROM orders WHERE transaction_id='$txn_id'";
 			$r = mysqli_query($dbc, $q);
+			if (mysqli_num_rows($r) === 0) { // Add this new transaction:
 
+				$uid = (isset($_POST['custom'])) ? (int) $_POST['custom'] : 0;
+				$status = escape_data($_POST['payment_status'], $dbc);
+				$amount = (int) ($_POST['mc_gross'] * 100);
+				$q = "INSERT INTO orders (user_id, transaction_id, payment_status, payment_amount) VALUES ($uid, '$txn_id', '$status', $amount)";
+				$r = mysqli_query($dbc, $q);
+				
+			} // The order has already been stored, nothing to do!
 
 		} // The right values don't exist in $_POST!
 

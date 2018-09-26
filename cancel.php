@@ -8,7 +8,7 @@ require('./includes/config.inc.php');
 // The config file also starts the session.
 
 // Require the database connection:
-require(MYSQL);
+require('./includes/mysql.inc.php');
 
 // Include the header file:
 $page_title = 'Oops!';

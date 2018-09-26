@@ -58,7 +58,23 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['txn_id']) && ($_POS
 				$amount = (int) ($_POST['mc_gross'] * 100);
 				$q = "INSERT INTO orders (user_id, transaction_id, payment_status, payment_amount) VALUES ($uid, '$txn_id', '$status', $amount)";
 				$r = mysqli_query($dbc, $q);
-				
+				if (mysqli_affected_rows($dbc) === 1) {
+					
+					if ($uid > 0) {
+	
+						// Update the users table:
+						$q = "UPDATE users SET date_expires = IF(date_expires > NOW(), ADDDATE(date_expires, INTERVAL 1 YEAR), ADDDATE(NOW(), INTERVAL 1 YEAR)), date_modified=NOW() WHERE id=$uid";
+						$r = mysqli_query($dbc, $q);
+						if (mysqli_affected_rows($dbc) !== 1) {
+							trigger_error('The user\'s expiration date could not be updated!');
+						}
+	
+					} // No user ID.
+					
+				} else { // Problem inserting the order!
+					trigger_error('The transaction could not be stored in the orders table!');						
+				}
+
 			} // The order has already been stored, nothing to do!
 
 		} // The right values don't exist in $_POST!

@@ -66,13 +66,13 @@ if (($_SERVER['REQUEST_METHOD'] === 'POST') && isset($_POST['txn_id']) && ($_POS
 						$q = "UPDATE users SET date_expires = IF(date_expires > NOW(), ADDDATE(date_expires, INTERVAL 1 YEAR), ADDDATE(NOW(), INTERVAL 1 YEAR)), date_modified=NOW() WHERE id=$uid";
 						$r = mysqli_query($dbc, $q);
 						if (mysqli_affected_rows($dbc) !== 1) {
-							trigger_error('The user\'s expiration date could not be updated!');
+							trigger_error('A data de expiração do usuário não pôde ser atualizada!');
 						}
 	
 					} // No user ID.
 					
 				} else { // Problem inserting the order!
-					trigger_error('The transaction could not be stored in the orders table!');						
+					trigger_error('A transação não pôde ser armazenada na tabela de pedidos!');						
 				}
 
 			} // The order has already been stored, nothing to do!
